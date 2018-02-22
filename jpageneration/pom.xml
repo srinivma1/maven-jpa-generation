@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example.template</groupId>
+  <artifactId>jpageneration</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>jpageneration</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-entitymanager</artifactId>
+   <version>4.3.5.Final</version>
+  </dependency>
+  <dependency>
+      <groupId>org.javers</groupId>
+      <artifactId>javers-spring-boot-starter-sql</artifactId>
+      <version>3.7.9</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+   <build>
+
+    <plugins>
+
+     <plugin>
+
+       <groupId>org.codehaus.mojo</groupId>
+
+       <artifactId>hibernate3-maven-plugin</artifactId>
+
+       <version>2.2</version>
+
+         <configuration>
+
+           <components>
+
+             <component>
+
+               <name>hbm2hbmxml</name>
+
+               <implementation>jdbcconfiguration</implementation>
+
+               <outputDirectory>target/generated-resources/hibernate3</outputDirectory>
+
+             </component>
+
+             <component>
+
+               <name>hbm2java</name>
+
+               <implementation>jdbcconfiguration</implementation>
+
+               <outputDirectory>target/generated-sources/hibernate3</outputDirectory>
+
+             </component>
+
+           </components>
+
+           <componentProperties>
+
+             <revengfile>drc/main/resources/reveng.xml</revengfile>
+
+             <propertyfile>src/main/resources/hibernate.properties</propertyfile>
+
+             <packagename>com.example.template.jpageneration</packagename>
+
+             <jdk5>true</jdk5>
+
+             <ejb3>true</ejb3>
+
+           </componentProperties>
+
+         </configuration>
+
+         <dependencies>
+
+           <dependency>
+
+             <groupId>cglib</groupId>
+
+             <artifactId>cglib-nodep</artifactId>
+
+             <version>2.2.2</version>
+
+           </dependency>
+
+           <dependency>
+
+             <groupId>com.microsoft.sqlserver</groupId>
+
+             <artifactId>mssql-jdbc</artifactId>
+
+             <version>6.2.0.jre8</version>
+
+           </dependency>
+
+         </dependencies>
+
+       </plugin>
+
+</plugins>
+
+  </build>
+</project>
